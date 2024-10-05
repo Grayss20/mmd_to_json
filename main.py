@@ -25,33 +25,65 @@ def parse_exam_details(content):
 # Step 3: Define a function to parse individual problems
 def parse_problems(content):
     problems = []
-    problem_blocks = re.split(r'\n(?=\d+\.\s)', content)  # Split content by lines starting with a number followed by a period
-    problem_number = 1
 
-    for block in problem_blocks:
-        if re.match(r'^\d+\.', block.strip()):  # Check if the block starts with a problem number
-            problem_set = {
-                "number": problem_number,
-                "problem_set": parse_problem_set(block)
-            }
-            problems.append(problem_set)
-            problem_number += 1
+    # Find the first problem starting with "1."
+    first_problem_start = re.search(r'\b1\.', content)
+    if first_problem_start:
+        problems_content = content[first_problem_start.start():]
+
+        # Split problems based on "\n(?=\s*\d+\s*\.)" pattern
+        problem_blocks = re.split(r'\n(?=\s*\d+\s*\.)', problems_content)
+        problem_number = 1
+
+        for block in problem_blocks:
+            block = block.strip()
+            if block:
+                print(f"Parsing problem block for problem {problem_number}:\n{block}\n{'-'*40}")  # Debug print
+                problem_set = parse_problem_set(block)
+                problem_set["number"] = problem_number
+                problems.append(problem_set)
+                problem_number += 1
 
     return problems
 
 # Step 4: Define a function to parse each problem set
 def parse_problem_set(block):
-    figure_url = re.search(r'!\[.*?\]\((.*?)\)', block)
-    text_match = re.search(r'^\d+\.\s*(.*?)(?=(\n\s*\(|\n\s*-|$))', block, re.DOTALL)
-    parts_block = re.findall(r'\n\s*\((\w)\)\s*(.*?)(?=(\n\s*\(|\n\s*-|$))', block, re.DOTALL)
+    # Extract figure URL if available and remove it from the text block
+    figure_url_match = re.search(r'!\[.*?\]\((.*?)\)', block)
+    figure_url = figure_url_match.group(1).strip() if figure_url_match else ""
+    block = re.sub(r'!\[.*?\]\(.*?\)', '', block).strip()
+
+    # Extract problem text excluding parts
+    text_match = re.search(r'^(.*?)(?=(\n\s*\((a|b|c|d|e|f)\)|\n\d+\.|continued|$))', block, re.DOTALL)
+
+    # Extract individual parts of the problem
+    parts_block = re.findall(r'\n\s*(\((a|b|c|d|e|f)\))\s*(.*?)(?=(\n\s*\((a|b|c|d|e|f)\)|\n\d+\.|$))', block, re.DOTALL)
+
+    # Extract total marks if available
     total_marks_match = re.search(r'\((\d+)\)\s*$', block)
 
     # Clean up continuation text if present
     problem_text = text_match.group(1).strip() if text_match else ""
     problem_text = re.sub(r'Question \d+ continued', '', problem_text, flags=re.IGNORECASE).strip()
 
+    # Handle special case where text starts with part (a) immediately
+    if re.match(r'^\(a\)', problem_text):
+        problem_text = ""
+
+    # If problem_text is too short (less than 5 characters) and parts exist, assign the first part to problem_text
+    if len(problem_text) < 5 and parts_block:
+        first_part = parts_block.pop(0)
+        problem_text = f"{problem_text.strip()} {first_part[0].strip()}".strip()
+        parts_block.insert(0, (first_part[0], first_part[1], first_part[2]))
+
+    # If problem_text only contains the problem number, clear it
+    if re.match(r'^\d+\.$', problem_text.strip()):
+        problem_text = ""
+
+    print(f"Extracted problem text:\n{problem_text}\n{'='*40}")  # Debug print
+
     problem_set = {
-        "figure_url": figure_url.group(1).strip() if figure_url else "",
+        "figure_url": figure_url,
         "text": problem_text,
         "total_marks": int(total_marks_match.group(1)) if total_marks_match else 0,
         "parts": parse_parts(parts_block)
@@ -61,7 +93,9 @@ def parse_problem_set(block):
 # Step 5: Define a function to parse individual parts of a problem
 def parse_parts(parts_content):
     parts = []
-    for label, text, _ in parts_content:
+    for part in parts_content:
+        label = part[0].strip()
+        text = part[2].strip()
         marks_match = re.search(r'\((\d+)\)', text)
         part_text = re.sub(r'\((\d+)\)', '', text).strip()
         part_text = re.sub(r'Question \d+ continued', '', part_text, flags=re.IGNORECASE).strip()  # Remove continuation text
