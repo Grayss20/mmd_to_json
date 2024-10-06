@@ -19,7 +19,11 @@ def extract_questions(content):
             leftovers = leftovers[1:].lstrip()
         # Remove occurrences of '\nQuestion % continued'
         leftovers = re.sub(r'\nQuestion \d+ continued', '', leftovers).strip()
-        questions.append({"question_number": int(number), "leftovers": leftovers})
+        # Extract all figure URLs if present
+        figure_urls = re.findall(r'!\[.*?\]\((.*?)\)', leftovers)
+        # Remove the figure URLs from leftovers
+        leftovers = re.sub(r'!\[.*?\]\(.*?\)', '', leftovers).strip()
+        questions.append({"question_number": int(number), "leftovers": leftovers, "figure_url": figure_urls})
     return questions
 
 
