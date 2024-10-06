@@ -110,6 +110,15 @@ def extract_roman_parts(leftovers):
             "marks": 0
         }
         expected_roman = next_roman(expected_roman)
+
+    # Extra logic to add subparts if "(a)" is found in any part
+    for part in parts:
+        if "(a)" in part["text"]:
+            split_index = part["text"].find("(a)")
+            subparts_text = part["text"][split_index:]
+            part["text"] = part["text"][:split_index].strip()
+            part["subparts"] = extract_alphabetic_parts(subparts_text)
+
     return parts
 
 
