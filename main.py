@@ -10,6 +10,7 @@ def read_file(file_path):
 
 # Step 2: Define a function to extract questions from the content
 def extract_questions(content):
+    content = remove_numeric_placeholders(content)  # Remove numeric placeholders before processing
     # Find all question blocks that start with a question number (optionally followed by spaces) and end where the next question begins
     question_blocks = re.findall(r'\n(\d+)\s*(\.)(.*?)(?=\n\d+\s*\.\s*|$)', content, re.DOTALL)
     questions = []
@@ -32,7 +33,6 @@ def extract_questions(content):
         else:
             text = leftovers
             leftovers = ''
-        text = remove_trailing_marks(text)  # Apply the function to remove trailing marks
         parts = extract_parts(leftovers)  # Extract parts from leftovers
         questions.append({
             "question_number": int(number),
@@ -45,55 +45,74 @@ def extract_questions(content):
     return questions
 
 
-# Step 3: Define a function to remove trailing marks
-def remove_trailing_marks(text):
-    return re.sub(r'\n\(\d\)$', '', text).rstrip()
-
-
-# Step 4: Define a function to extract parts from leftovers
+# Step 3: Define a function to extract parts from leftovers
 def extract_parts(leftovers):
     if not leftovers:
         return []
-    elif leftovers.startswith('(a)') or leftovers.startswith('(i)'):
-        parts = []
-        part_blocks = re.split(r'(\([a-z]\)|\((i{1,3}|iv|v|vi{0,3}|ix|x)\))', leftovers)
-        current_part = None
-        expected_alphabet = 'a'
-        expected_roman = 'i'
-        is_alphabetic = leftovers.startswith('(a)')
-
-        for block in part_blocks:
-            if block and (re.match(r'^\([a-z]\)$', block) or re.match(r'^\((i{1,3}|iv|v|vi{0,3}|ix|x)\)$', block)):
-                # Handle alphabetic parts
-                if is_alphabetic:
-                    if block == f'({expected_alphabet})':
-                        expected_alphabet = chr(ord(expected_alphabet) + 1)
-                    else:
-                        raise Exception("Alphabetic parts are out of order.")
-                else:
-                    if block == f'({expected_roman})':
-                        expected_roman = next_roman(expected_roman)
-                    else:
-                        raise Exception("Roman numeral parts are out of order.")
-                if current_part:
-                    parts.append(current_part)
-                current_part = {
-                    "part": block,
-                    "text": "",
-                    "marks": 0
-                }
-            elif current_part and block and block.strip():
-                current_part["text"] += " " + block.strip()
-        if current_part:
-            parts.append(current_part)
-        for part in parts:
-            part["text"] = part["text"].strip()
-        return parts
+    elif leftovers.startswith('(a)'):
+        return extract_alphabetic_parts(leftovers)
+    elif leftovers.startswith('(i)'):
+        return extract_roman_parts(leftovers)
     else:
         raise Exception("There is a problem in splitting leftovers into parts after extraction of initial text.")
 
 
-# Step 5: Define a function to get the next Roman numeral
+# Step 4: Define a function to extract alphabetic parts
+def extract_alphabetic_parts(leftovers):
+    parts = []
+    current_part = {
+        "part": "a",
+        "text": "",
+        "marks": 0
+    }
+    expected_alphabet = 'b'
+    while True:
+        next_delim = f'({expected_alphabet})'
+        split_index = leftovers.find(next_delim)
+        if split_index == -1:
+            current_part["text"] = leftovers.strip()
+            parts.append(current_part)
+            break
+        current_part["text"] = leftovers[:split_index].strip()
+        parts.append(current_part)
+        leftovers = leftovers[split_index:]
+        current_part = {
+            "part": expected_alphabet,
+            "text": "",
+            "marks": 0
+        }
+        expected_alphabet = chr(ord(expected_alphabet) + 1)
+    return parts
+
+
+# Step 5: Define a function to extract Roman numeral parts
+def extract_roman_parts(leftovers):
+    parts = []
+    part_blocks = re.split(r'(\((i{1,3}|iv|v|vi{0,3}|ix|x)\))', leftovers)
+    current_part = None
+    expected_roman = 'i'
+
+    for block in part_blocks:
+        if block and re.match(r'^\((i{1,3}|iv|v|vi{0,3}|ix|x)\)$', block):
+            if block == f'({expected_roman})':
+                expected_roman = next_roman(expected_roman)
+                if current_part:
+                    current_part["text"] = current_part["text"].strip()
+                    parts.append(current_part)
+                current_part = {
+                    "part": block.strip('()'),
+                    "text": block,  # Start with the delimiter included
+                    "marks": 0
+                }
+        elif current_part and block:
+            current_part["text"] += block  # Append text without removing the delimiter
+    if current_part:
+        current_part["text"] = current_part["text"].strip()
+        parts.append(current_part)
+    return parts
+
+
+# Step 6: Define a function to get the next Roman numeral
 def next_roman(roman):
     roman_numerals = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"]
     try:
@@ -103,10 +122,16 @@ def next_roman(roman):
         raise Exception("Invalid or unsupported Roman numeral sequence.")
 
 
+# Step 7: Define a function to remove occurrences of "(%)" where % is a digit from 1 to 9
+def remove_numeric_placeholders(text):
+    return re.sub(r'\(\d\)', '', text)
+
+
 # Example usage
 if __name__ == "__main__":
     file_path = "to_proceed/que/9ma0-01-que-20220608.mmd"
     content = read_file(file_path)
+    content = remove_numeric_placeholders(content)  # Remove numeric placeholders before extracting questions
     questions = extract_questions(content)
 
     question_counter = 1
