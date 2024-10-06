@@ -88,27 +88,28 @@ def extract_alphabetic_parts(leftovers):
 # Step 5: Define a function to extract Roman numeral parts
 def extract_roman_parts(leftovers):
     parts = []
-    part_blocks = re.split(r'(\((i{1,3}|iv|v|vi{0,3}|ix|x)\))', leftovers)
-    current_part = None
-    expected_roman = 'i'
-
-    for block in part_blocks:
-        if block and re.match(r'^\((i{1,3}|iv|v|vi{0,3}|ix|x)\)$', block):
-            if block == f'({expected_roman})':
-                expected_roman = next_roman(expected_roman)
-                if current_part:
-                    current_part["text"] = current_part["text"].strip()
-                    parts.append(current_part)
-                current_part = {
-                    "part": block.strip('()'),
-                    "text": block,  # Start with the delimiter included
-                    "marks": 0
-                }
-        elif current_part and block:
-            current_part["text"] += block  # Append text without removing the delimiter
-    if current_part:
-        current_part["text"] = current_part["text"].strip()
+    current_part = {
+        "part": "i",
+        "text": "",
+        "marks": 0
+    }
+    expected_roman = 'ii'
+    while True:
+        next_delim = f'({expected_roman})'
+        split_index = leftovers.find(next_delim)
+        if split_index == -1:
+            current_part["text"] = leftovers.strip()
+            parts.append(current_part)
+            break
+        current_part["text"] = leftovers[:split_index].strip()
         parts.append(current_part)
+        leftovers = leftovers[split_index:]
+        current_part = {
+            "part": expected_roman,
+            "text": "",
+            "marks": 0
+        }
+        expected_roman = next_roman(expected_roman)
     return parts
 
 
