@@ -15,7 +15,7 @@ def extract_questions(content):
     questions = []
     for number, dot, body in question_blocks:
         leftovers = body.strip()
-        if leftovers.startswith('.'):
+        if leftovers.startswith('.'):  # Remove leading dot and spaces
             leftovers = leftovers[1:].lstrip()
         # Remove occurrences of '\nQuestion % continued'
         leftovers = re.sub(r'\nQuestion \d+ continued', '', leftovers).strip()
@@ -23,8 +23,29 @@ def extract_questions(content):
         figure_urls = re.findall(r'!\[.*?\]\((.*?)\)', leftovers)
         # Remove the figure URLs from leftovers
         leftovers = re.sub(r'!\[.*?\]\(.*?\)', '', leftovers).strip()
-        questions.append({"question_number": int(number), "leftovers": leftovers, "figure_url": figure_urls})
+        # Extract the text until the first occurrence of '(a)' or '(i)'
+        if '(a)' in leftovers or '(i)' in leftovers:
+            split_point = min(leftovers.find('(a)') if '(a)' in leftovers else len(leftovers),
+                              leftovers.find('(i)') if '(i)' in leftovers else len(leftovers))
+            text = leftovers[:split_point].strip()
+            leftovers = leftovers[split_point:].lstrip()
+        else:
+            text = leftovers
+            leftovers = ''
+        text = remove_trailing_marks(text)  # Apply the function to remove trailing marks
+        questions.append({
+            "question_number": int(number),
+            "leftovers": leftovers,
+            "figure_url": figure_urls,
+            "text": text,
+            "total_marks": 0
+        })
     return questions
+
+
+# Step 3: Define a function to remove trailing marks
+def remove_trailing_marks(text):
+    return re.sub(r'\n\(\d\)$', '', text).rstrip()
 
 
 # Example usage
