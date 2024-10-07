@@ -1,7 +1,7 @@
 import re
 from pprint import pprint
 from utils import read_file
-from extractors import extract_questions, remove_numeric_placeholders
+from extractors import extract_questions
 
 # Example usage
 if __name__ == "__main__":
