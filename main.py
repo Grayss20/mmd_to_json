@@ -41,51 +41,51 @@ def extract_heading_info(pdf_text):
         'year': ''
     }
 
-    # Extract the first page text
-    first_page = pdf_text[0]
+    # Convert pdf_text list to a single string for easier searching
+    content = ' '.join(pdf_text)
 
     # Extract exam board
-    exam_board_match = re.search(r'Pearson Edexcel', first_page)
+    exam_board_match = re.search(r'Pearson Edexcel', content)
     if exam_board_match:
         heading['exam_board'] = 'Pearson Edexcel'
 
     # Extract level
-    level_match = re.search(r'Level (\d+ \w+)', first_page)
+    level_match = re.search(r'Level \d+ \w+', content)
     if level_match:
         heading['level'] = level_match.group(0)
 
     # Extract subject
-    subject_match = re.search(r'Mathematics\nAdvanced', first_page)
+    subject_match = re.search(r'Mathematics\s+Advanced', content)
     if subject_match:
-        heading['subject'] = 'Mathematics\nAdvanced'
+        heading['subject'] = subject_match.group(0)
 
     # Extract paper reference
-    paper_reference_match = re.search(r'\b9MA0/01\b', first_page)
+    paper_reference_match = re.search(r'\b\d+MA\d+/\d{2}\b', content)
     if paper_reference_match:
         heading['paper_reference'] = paper_reference_match.group(0)
 
     # Extract paper
-    paper_match = re.search(r'PAPER 1: Pure Mathematics 1', first_page)
+    paper_match = re.search(r'PAPER \d+: Pure Mathematics \d+', content)
     if paper_match:
         heading['paper'] = paper_match.group(0)
 
     # Extract total mark
-    total_mark_match = re.search(r'Total mark for this paper is (\d+)', first_page)
+    total_mark_match = re.search(r'otal mark for this paper is (\d+)', content)
     if total_mark_match:
         heading['total_mark'] = int(total_mark_match.group(1))
 
     # Extract total questions
-    total_questions_match = re.search(r'There are (\d+) questions in this question paper', first_page)
+    total_questions_match = re.search(r'There are (\d+) questions in this question paper', content)
     if total_questions_match:
         heading['total_questions'] = int(total_questions_match.group(1))
 
     # Extract time
-    time_match = re.search(r'Time (\d+ hours)', first_page)
+    time_match = re.search(r'Time (\d+ hours)', content)
     if time_match:
         heading['time'] = time_match.group(1)
 
     # Extract year
-    year_match = re.search(r'©(\d{4}) Pearson Education Ltd\.', first_page)
+    year_match = re.search(r'©(\d{4}) Pearson Education Ltd\.', content)
     if year_match:
         heading['year'] = int(year_match.group(1))
 
