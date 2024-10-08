@@ -28,6 +28,70 @@ def extract_current_question(text):
     return None
 
 
+def extract_heading_info(pdf_text):
+    heading = {
+        'exam_board': '',
+        'level': '',
+        'subject': '',
+        'paper': '',
+        'paper_reference': '',
+        'total_mark': '',
+        'total_questions': '',
+        'time': '',
+        'year': ''
+    }
+
+    # Extract the first page text
+    first_page = pdf_text[0]
+
+    # Extract exam board
+    exam_board_match = re.search(r'Pearson Edexcel', first_page)
+    if exam_board_match:
+        heading['exam_board'] = 'Pearson Edexcel'
+
+    # Extract level
+    level_match = re.search(r'Level (\d+ \w+)', first_page)
+    if level_match:
+        heading['level'] = level_match.group(0)
+
+    # Extract subject
+    subject_match = re.search(r'Mathematics\nAdvanced', first_page)
+    if subject_match:
+        heading['subject'] = 'Mathematics\nAdvanced'
+
+    # Extract paper reference
+    paper_reference_match = re.search(r'\b9MA0/01\b', first_page)
+    if paper_reference_match:
+        heading['paper_reference'] = paper_reference_match.group(0)
+
+    # Extract paper
+    paper_match = re.search(r'PAPER 1: Pure Mathematics 1', first_page)
+    if paper_match:
+        heading['paper'] = paper_match.group(0)
+
+    # Extract total mark
+    total_mark_match = re.search(r'Total mark for this paper is (\d+)', first_page)
+    if total_mark_match:
+        heading['total_mark'] = int(total_mark_match.group(1))
+
+    # Extract total questions
+    total_questions_match = re.search(r'There are (\d+) questions in this question paper', first_page)
+    if total_questions_match:
+        heading['total_questions'] = int(total_questions_match.group(1))
+
+    # Extract time
+    time_match = re.search(r'Time (\d+ hours)', first_page)
+    if time_match:
+        heading['time'] = time_match.group(1)
+
+    # Extract year
+    year_match = re.search(r'©(\d{4}) Pearson Education Ltd\.', first_page)
+    if year_match:
+        heading['year'] = int(year_match.group(1))
+
+    return heading
+
+
 def update_marks_in_questions(pdf_text, questions):
     # Define the pattern to match all the target substrings
     pattern = r'\(a\)|\(b\)|\(c\)|\(d\)|\(e\)|\(f\)|\(g\)|\(h\)|\(i\)|\(ii\)|\(iii\)|\(iv\)|\(\d\)'
@@ -96,13 +160,9 @@ if __name__ == "__main__":
     pdf_text = extract_text_from_pdf('to_proceed/que/9ma0-01-que-20220608.pdf')
     print(pdf_text)
 
+    # Extract heading information from the PDF text
+    heading_info = extract_heading_info(pdf_text)
+    pprint(heading_info)
+
     # Update the marks in the questions list using the PDF text
     update_marks_in_questions(pdf_text, questions)
-
-#    Print the updated questions list
-    question_counter = 1
-    for question in questions:
-        print(f"Question {question_counter}:")
-        pprint(question)
-        print("-" * 40)
-        question_counter += 1
