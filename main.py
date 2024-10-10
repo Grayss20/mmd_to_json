@@ -1,6 +1,8 @@
 import re
 import pprint
+import json
 from utils import read_file
+from que_run import proceed_que
 
 
 def parse_rms_file(file_path):
@@ -44,13 +46,23 @@ if __name__ == "__main__":
     #     print("-" * 40)
     #     print(f"Question {question['question_number']}:\n{question['tabular']}\n{'-' * 40}")
 
-    lines = questions[0]['tabular'].split('\n')
+    # lines = questions[0]['tabular'].split('\n')
+    #
+    # for line in lines:
+    #     print(line)
+    #
+    # for line in lines:
+    #     chunks = line.split('&')
+    #
+    #     for chunk in chunks:
+    #         print(chunk)
 
-    for line in lines:
-        print(line)
+    que, heading_info = proceed_que()
 
-    for line in lines:
-        chunks = line.split('&')
+    combined_que = { "heading_info": heading_info, "questions": que}
 
-        for chunk in chunks:
-            print(chunk)
+    pprint.pprint(combined_que)
+
+# Convert heading_info and que to single JSON
+with open('results/info.json', 'w') as f:
+    json.dump(combined_que, f)
