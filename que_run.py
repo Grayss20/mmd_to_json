@@ -1,7 +1,7 @@
 from pprint import pprint
 from utils import read_file
-from extractors import (extract_questions, remove_numeric_placeholders, extract_text_from_pdf, extract_current_question,
-                        extract_heading_info, update_marks_in_questions)
+from que_extractors import (extract_questions, remove_numeric_placeholders, extract_text_from_pdf, extract_current_question,
+                            extract_heading_info, update_marks_in_questions)
 
 
 def proceed_que():
