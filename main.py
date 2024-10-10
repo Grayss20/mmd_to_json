@@ -41,28 +41,18 @@ if __name__ == "__main__":
     file_path = "to_proceed/rms/9ma0-01-rms-20220818.mmd"
     questions = parse_rms_file(file_path)
 
-    # Print the questions list to verify the result
-    # for question in questions:
-    #     print("-" * 40)
-    #     print(f"Question {question['question_number']}:\n{question['tabular']}\n{'-' * 40}")
-
-    # lines = questions[0]['tabular'].split('\n')
-    #
-    # for line in lines:
-    #     print(line)
-    #
-    # for line in lines:
-    #     chunks = line.split('&')
-    #
-    #     for chunk in chunks:
-    #         print(chunk)
-
     que, heading_info = proceed_que()
 
-    combined_que = { "heading_info": heading_info, "questions": que}
+    pprint.pprint(que[0])
+    print("--" * 30)
+    print(questions[0]['tabular'])
+    print("--" * 30)
 
-    pprint.pprint(combined_que)
+    rows = questions[0]['tabular'].replace('\\hline', '').replace('\\multirow', '').replace('\\\\', '').replace('\\(', '$').replace('\\)', '$').split('\n')
 
-# Convert heading_info and que to single JSON
-with open('results/info.json', 'w') as f:
-    json.dump(combined_que, f)
+    for row in rows[2:]:
+        print(row)
+        if '&' in row:
+            chunks = row.split('&')
+            print(chunks)
+
