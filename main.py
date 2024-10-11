@@ -43,16 +43,38 @@ if __name__ == "__main__":
 
     que, heading_info = proceed_que()
 
+    # Update que list with mark_scheme from questions list
+    for question in questions:
+        for q in que:
+            if q["question_number"] == question["question_number"]:
+                q["mark_scheme"] = question["tabular"]
+
     pprint.pprint(que[0])
     print("--" * 30)
-    print(questions[0]['tabular'])
+    print(questions[0])
     print("--" * 30)
 
-    rows = questions[0]['tabular'].replace('\\hline', '').replace('\\multirow', '').replace('\\\\', '').replace('\\(', '$').replace('\\)', '$').split('\n')
+    for question in questions:
+        rows = question['tabular'].replace('\\hline', '').replace('\\multirow', '').replace('\\\\', '').replace('\\(', '$').replace('\\)', '$').split('\n')
+        for q in que:
+            if q["question_number"] == question["question_number"]:
+                if len(q["parts"]) == 0:
+                    print(rows)
+                    steps = []
+                    for row in rows[2:]:
+                        if "&" in row:
+                            chunks = row.split('&')
+                            if chunks[1].strip() != '':
+                                steps.append({
+                                    "scheme": chunks[1].strip(),
+                                    "marks": "",
+                                    "AOs": ""
+                                })
 
-    for row in rows[2:]:
-        print(row)
-        if '&' in row:
-            chunks = row.split('&')
-            print(chunks)
+                    q["mark_scheme"] = {
+                        "steps": steps,
+                        "alternative": question["leftovers"]
+                    }
 
+    print("-"*30)
+    print(que[11])

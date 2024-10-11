@@ -1,1 +1,337 @@
-{"heading_info": {"exam_board": "Pearson Edexcel", "level": "Level 3 GCE", "subject": "Mathematics\nAdvanced", "paper": "PAPER 1: Pure Mathematics 1", "paper_reference": "9MA0/01", "total_mark": 100, "total_questions": 16, "time": "2 hours", "year": 2022}, "questions": [{"question_number": 1, "figure_url": [], "text": "The point \\(P(-2,-5)\\) lies on the curve with equation \\(y=\\mathrm{f}(x), x \\in \\mathbb{R}\\)\n\nFind the point to which \\(P\\) is mapped, when the curve with equation \\(y=\\mathrm{f}(x)\\) is transformed to the curve with equation", "total_marks": 4, "parts": [{"part": "a", "text": "(a) \\(y=\\mathrm{f}(x)+2\\)", "marks": 1}, {"part": "b", "text": "(b) \\(y=|\\mathrm{f}(x)|\\)", "marks": 1}, {"part": "c", "text": "(c) \\(y=3 \\mathrm{f}(x-2)+2\\)", "marks": 2}]}, {"question_number": 2, "figure_url": [], "text": "\\(\\mathrm{f}(x)=(x-4)\\left(x^{2}-3 x+k\\right)-42\\) where \\(k\\) is a constant Given that \\((x+2)\\) is a factor of \\(\\mathrm{f}(x)\\), find the value of \\(k\\).", "total_marks": 3, "parts": []}, {"question_number": 3, "figure_url": [], "text": "A circle has equation\n\\[\nx^{2}+y^{2}-10 x+16 y=80\n\\]", "total_marks": 5, "parts": [{"part": "a", "text": "(a) Find\n(i) the coordinates of the centre of the circle,\n(ii) the radius of the circle.\n\nGiven that \\(P\\) is the point on the circle that is furthest away from the origin \\(O\\),", "marks": 3}, {"part": "b", "text": "(b) find the exact length \\(O P\\)", "marks": 2}]}, {"question_number": 4, "figure_url": [], "text": "", "total_marks": 3, "parts": [{"part": "a", "text": "(a) Express \\(\\lim _{\\delta x \\rightarrow 0} \\sum_{x=2.1}^{6.3} \\frac{2}{x} \\delta x\\) as an integral.", "marks": 1}, {"part": "b", "text": "(b) Hence show that\n\\[\n\\lim _{\\delta x \\rightarrow 0} \\sum_{x=2.1}^{6.3} \\frac{2}{x} \\delta x=\\ln k\n\\]\nwhere \\(k\\) is a constant to be found.", "marks": 2}]}, {"question_number": 5, "figure_url": ["https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-10.jpg?height=58&width=75&top_left_y=948&top_left_x=1707"], "text": "The height, \\(h\\) metres, of a tree, \\(t\\) years after being planted, is modelled by the equation\n\\[\nh^{2}=a t+b \\quad 0 \\leqslant t<25\n\\]\nwhere \\(a\\) and \\(b\\) are constants.\nGiven that\n- the height of the tree was 2.60 m , exactly 2 years after being planted\n- the height of the tree was 5.10 m , exactly 10 years after being planted", "total_marks": 6, "parts": [{"part": "a", "text": "(a) find a complete equation for the model, giving the values of \\(a\\) and \\(b\\) to 3 significant figures.\n\n\nGiven that the height of the tree was 7 m , exactly 20 years after being planted", "marks": 4}, {"part": "b", "text": "(b) evaluate the model, giving reasons for your answer.", "marks": 2}]}, {"question_number": 6, "figure_url": ["https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-12.jpg?height=532&width=826&top_left_y=245&top_left_x=615"], "text": "Figure 1\nFigure 1 shows a sketch of a curve \\(C\\) with equation \\(y=\\mathrm{f}(x)\\) where \\(\\mathrm{f}(x)\\) is a cubic expression in \\(x\\).\n\nThe curve\n- passes through the origin\n- has a maximum turning point at \\((2,8)\\)\n- has a minimum turning point at \\((6,0)\\)", "total_marks": 6, "parts": [{"part": "a", "text": "(a) Write down the set of values of \\(x\\) for which\n\\[\n\\mathrm{f}^{\\prime}(x)<0\n\\]\n\nThe line with equation \\(y=k\\), where \\(k\\) is a constant, intersects \\(C\\) at only one point.", "marks": 1}, {"part": "b", "text": "(b) Find the set of values of \\(k\\), giving your answer in set notation.", "marks": 2}, {"part": "c", "text": "(c) Find the equation of \\(C\\). You may leave your answer in factorised form.", "marks": 3}]}, {"question_number": 7, "figure_url": [], "text": "", "total_marks": 5, "parts": [{"part": "i", "text": "(i) Given that \\(p\\) and \\(q\\) are integers such that\n\\[\np q \\text { is even }\n\\]\nuse algebra to prove by contradiction that at least one of \\(p\\) or \\(q\\) is even.", "marks": 3}, {"part": "ii", "text": "(ii) Given that \\(x\\) and \\(y\\) are integers such that\n- \\(x<0\\)\n- \\((x+y)^{2}<9 x^{2}+y^{2}\\)\nshow that \\(y>4 x\\)", "marks": 2}]}, {"question_number": 8, "figure_url": ["https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-16.jpg?height=535&width=692&top_left_y=241&top_left_x=682"], "text": "Figure 2\nA car stops at two sets of traffic lights.\nFigure 2 shows a graph of the speed of the car, \\(v \\mathrm{~ms}^{-1}\\), as it travels between the two sets of traffic lights.\n\nThe car takes \\(T\\) seconds to travel between the two sets of traffic lights.\nThe speed of the car is modelled by the equation\n\\[\nv=(10-0.4 t) \\ln (t+1) \\quad 0 \\leqslant t \\leqslant T\n\\]\nwhere \\(t\\) seconds is the time after the car leaves the first set of traffic lights.\nAccording to the model,", "total_marks": 8, "parts": [{"part": "a", "text": "(a) find the value of \\(T\\)", "marks": 1}, {"part": "b", "text": "(b) show that the maximum speed of the car occurs when\n\\[\nt=\\frac{26}{1+\\ln (t+1)}-1\n\\]\n\nUsing the iteration formula\n\\[\nt_{n+1}=\\frac{26}{1+\\ln \\left(t_{n}+1\\right)}-1\n\\]\nwith \\(t_{1}=7\\)", "marks": 4}, {"part": "c", "text": "(c) (i) find the value of \\(t_{3}\\) to 3 decimal places,\n(ii) find, by repeated iteration, the time taken for the car to reach maximum speed.", "marks": 3}]}, {"question_number": 9, "figure_url": ["https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-20.jpg?height=418&width=533&top_left_y=239&top_left_x=770"], "text": "Figure 3\nFigure 3 shows a sketch of a parallelogram \\(P Q R S\\).\nGiven that\n- \\(\\overrightarrow{P Q}=2 \\mathbf{i}+3 \\mathbf{j}-4 \\mathbf{k}\\)\n- \\(\\overrightarrow{Q R}=5 \\mathbf{i}-2 \\mathbf{k}\\)", "total_marks": 6, "parts": [{"part": "a", "text": "(a) show that parallelogram \\(P Q R S\\) is a rhombus.", "marks": 2}, {"part": "b", "text": "(b) Find the exact area of the rhombus \\(P Q R S\\).", "marks": 4}]}, {"question_number": 10, "figure_url": [], "text": "A scientist is studying the number of bees and the number of wasps on an island. The number of bees, measured in thousands, \\(N_{b}\\), is modelled by the equation\n\\[\nN_{b}=45+220 \\mathrm{e}^{0.05 t}\n\\]\nwhere \\(t\\) is the number of years from the start of the study.\nAccording to the model,", "total_marks": 8, "parts": [{"part": "a", "text": "(a) find the number of bees at the start of the study,", "marks": 1}, {"part": "b", "text": "(b) show that, exactly 10 years after the start of the study, the number of bees was increasing at a rate of approximately 18 thousand per year.\n\nThe number of wasps, measured in thousands, \\(N_{w}\\), is modelled by the equation\n\\[\nN_{w}=10+800 \\mathrm{e}^{-0.05 t}\n\\]\nwhere \\(t\\) is the number of years from the start of the study.\nWhen \\(t=T\\), according to the models, there are an equal number of bees and wasps.", "marks": 3}, {"part": "c", "text": "(c) Find the value of \\(T\\) to 2 decimal places.", "marks": 4}]}, {"question_number": 11, "figure_url": ["https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-28.jpg?height=643&width=855&top_left_y=244&top_left_x=606"], "text": "Figure 4\nFigure 4 shows a sketch of part of the curve \\(C_{1}\\) with equation\n\\[\ny=2 x^{3}+10 \\quad x>0\n\\]\nand part of the curve \\(C_{2}\\) with equation\n\\[\ny=42 x-15 x^{2}-7 \\quad x>0\n\\]", "total_marks": 7, "parts": [{"part": "a", "text": "(a) Verify that the curves intersect at \\(x=\\frac{1}{2}\\)\n\nThe curves intersect again at the point \\(P\\)", "marks": 2}, {"part": "b", "text": "(b) Using algebra and showing all stages of working, find the exact \\(x\\) coordinate of \\(P\\)", "marks": 5}]}, {"question_number": 12, "figure_url": [], "text": "In this question you must show all stages of your working.\nSolutions relying on calculator technology are not acceptable.\nShow that\n\\[\n\\int_{1}^{\\mathrm{e}^{2}} x^{3} \\ln x \\mathrm{~d} x=a \\mathrm{e}^{8}+b\n\\]\nwhere \\(a\\) and \\(b\\) are rational constants to be found.", "total_marks": 5, "parts": []}, {"question_number": 13, "figure_url": [], "text": "", "total_marks": 7, "parts": [{"part": "i", "text": "(i) In an arithmetic series, the first term is \\(a\\) and the common difference is \\(d\\).\n\nShow that\n\\[\nS_{n}=\\frac{n}{2}[2 a+(n-1) d]\n\\]", "marks": 3}, {"part": "ii", "text": "(ii) James saves money over a number of weeks to buy a printer that costs \\(\u00a3 64\\)\n\nHe saves \\(\u00a3 10\\) in week \\(1, \u00a3 9.20\\) in week 2 , \\(\u00a3 8.40\\) in week 3 and so on, so that the weekly amounts he saves form an arithmetic sequence.\n\nGiven that James takes \\(n\\) weeks to save exactly \\(\u00a3 64\\)", "marks": 0, "subparts": [{"part": "a", "text": "(a) show that\n\\[\nn^{2}-26 n+160=0\n\\]", "marks": 2}, {"part": "b", "text": "(b) Solve the equation\n\\[\nn^{2}-26 n+160=0\n\\]", "marks": 1}, {"part": "c", "text": "(c) Hence state the number of weeks James takes to save enough money to buy the printer, giving a brief reason for your answer.", "marks": 1}]}]}, {"question_number": 14, "figure_url": [], "text": "In this question you must show all stages of your working.\n\nSolutions relying entirely on calculator technology are not acceptable.", "total_marks": 8, "parts": [{"part": "a", "text": "(a) Given that\n\\[\n2 \\sin \\left(x-60^{\\circ}\\right)=\\cos \\left(x-30^{\\circ}\\right)\n\\]\nshow that\n\\[\n\\tan x=3 \\sqrt{3}\n\\]", "marks": 4}, {"part": "b", "text": "(b) Hence or otherwise solve, for \\(0 \\leqslant \\theta<180^{\\circ}\\)\n\\[\n2 \\sin 2 \\theta=\\cos \\left(2 \\theta+30^{\\circ}\\right)\n\\]\ngiving your answers to one decimal place.", "marks": 4}]}, {"question_number": 15, "figure_url": ["https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-42.jpg?height=438&width=738&top_left_y=244&top_left_x=662"], "text": "Figure 5\nA company makes toys for children.\nFigure 5 shows the design for a solid toy that looks like a piece of cheese.\nThe toy is modelled so that\n- face \\(A B C\\) is a sector of a circle with radius \\(r \\mathrm{~cm}\\) and centre \\(A\\)\n- angle \\(B A C=0.8\\) radians\n- faces \\(A B C\\) and \\(D E F\\) are congruent\n- edges \\(A D, C F\\) and \\(B E\\) are perpendicular to faces \\(A B C\\) and \\(D E F\\)\n- edges \\(A D, C F\\) and \\(B E\\) have length \\(h \\mathrm{~cm}\\)\n\nGiven that the volume of the toy is \\(240 \\mathrm{~cm}^{3}\\)", "total_marks": 10, "parts": [{"part": "a", "text": "(a) show that the surface area of the toy, \\(S \\mathrm{~cm}^{2}\\), is given by\n\\[\nS=0.8 r^{2}+\\frac{1680}{r}\n\\]\nmaking your method clear.\n\nUsing algebraic differentiation,", "marks": 4}, {"part": "b", "text": "(b) find the value of \\(r\\) for which \\(S\\) has a stationary point.", "marks": 4}, {"part": "c", "text": "(c) Prove, by further differentiation, that this value of \\(r\\) gives the minimum surface area of the toy.", "marks": 2}]}, {"question_number": 16, "figure_url": ["https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-46.jpg?height=763&width=1012&top_left_y=241&top_left_x=522"], "text": "Figure 6\nFigure 6 shows a sketch of the curve \\(C\\) with parametric equations\n\\[\nx=8 \\sin ^{2} t \\quad y=2 \\sin 2 t+3 \\sin t \\quad 0 \\leqslant t \\leqslant \\frac{\\pi}{2}\n\\]\n\nThe region \\(R\\), shown shaded in Figure 6, is bounded by \\(C\\), the \\(x\\)-axis and the line with equation \\(x=4\\)", "total_marks": 9, "parts": [{"part": "a", "text": "(a) Show that the area of \\(R\\) is given by\n\\[\n\\int_{0}^{a}\\left(8-8 \\cos 4 t+48 \\sin ^{2} t \\cos t\\right) \\mathrm{d} t\n\\]\nwhere \\(a\\) is a constant to be found.", "marks": 5}, {"part": "b", "text": "(b) Hence, using algebraic integration, find the exact area of \\(R\\).", "marks": 4}]}]}
+{
+  "heading_info": {
+    "exam_board": "Pearson Edexcel",
+    "level": "Level 3 GCE",
+    "paper": "PAPER 1: Pure Mathematics 1",
+    "paper_reference": "9MA0/01",
+    "subject": "Mathematics\nAdvanced",
+    "time": "2 hours",
+    "total_mark": 100,
+    "total_questions": 16,
+    "year": 2022
+  },
+  "questions": [
+    {
+      "figure_url": [],
+      "parts": [
+        {
+          "marks": 1,
+          "part": "a",
+          "text": "(a) \\(y=\\mathrm{f}(x)+2\\)"
+        },
+        {
+          "marks": 1,
+          "part": "b",
+          "text": "(b) \\(y=|\\mathrm{f}(x)|\\)"
+        },
+        {
+          "marks": 2,
+          "part": "c",
+          "text": "(c) \\(y=3 \\mathrm{f}(x-2)+2\\)"
+        }
+      ],
+      "question_number": 1,
+      "text": "The point \\(P(-2,-5)\\) lies on the curve with equation \\(y=\\mathrm{f}(x), x \\in \\mathbb{R}\\)\n\nFind the point to which \\(P\\) is mapped, when the curve with equation \\(y=\\mathrm{f}(x)\\) is transformed to the curve with equation",
+      "total_marks": 4
+    },
+    {
+      "figure_url": [],
+      "parts": [],
+      "question_number": 2,
+      "text": "\\(\\mathrm{f}(x)=(x-4)\\left(x^{2}-3 x+k\\right)-42\\) where \\(k\\) is a constant Given that \\((x+2)\\) is a factor of \\(\\mathrm{f}(x)\\), find the value of \\(k\\).",
+      "total_marks": 3
+    },
+    {
+      "figure_url": [],
+      "parts": [
+        {
+          "marks": 3,
+          "part": "a",
+          "text": "(a) Find\n(i) the coordinates of the centre of the circle,\n(ii) the radius of the circle.\n\nGiven that \\(P\\) is the point on the circle that is furthest away from the origin \\(O\\),"
+        },
+        {
+          "marks": 2,
+          "part": "b",
+          "text": "(b) find the exact length \\(O P\\)"
+        }
+      ],
+      "question_number": 3,
+      "text": "A circle has equation\n\\[\nx^{2}+y^{2}-10 x+16 y=80\n\\]",
+      "total_marks": 5
+    },
+    {
+      "figure_url": [],
+      "parts": [
+        {
+          "marks": 1,
+          "part": "a",
+          "text": "(a) Express \\(\\lim _{\\delta x \\rightarrow 0} \\sum_{x=2.1}^{6.3} \\frac{2}{x} \\delta x\\) as an integral."
+        },
+        {
+          "marks": 2,
+          "part": "b",
+          "text": "(b) Hence show that\n\\[\n\\lim _{\\delta x \\rightarrow 0} \\sum_{x=2.1}^{6.3} \\frac{2}{x} \\delta x=\\ln k\n\\]\nwhere \\(k\\) is a constant to be found."
+        }
+      ],
+      "question_number": 4,
+      "text": "",
+      "total_marks": 3
+    },
+    {
+      "figure_url": [
+        "https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-10.jpg?height=58&width=75&top_left_y=948&top_left_x=1707"
+      ],
+      "parts": [
+        {
+          "marks": 4,
+          "part": "a",
+          "text": "(a) find a complete equation for the model, giving the values of \\(a\\) and \\(b\\) to 3 significant figures.\n\n\nGiven that the height of the tree was 7 m , exactly 20 years after being planted"
+        },
+        {
+          "marks": 2,
+          "part": "b",
+          "text": "(b) evaluate the model, giving reasons for your answer."
+        }
+      ],
+      "question_number": 5,
+      "text": "The height, \\(h\\) metres, of a tree, \\(t\\) years after being planted, is modelled by the equation\n\\[\nh^{2}=a t+b \\quad 0 \\leqslant t<25\n\\]\nwhere \\(a\\) and \\(b\\) are constants.\nGiven that\n- the height of the tree was 2.60 m , exactly 2 years after being planted\n- the height of the tree was 5.10 m , exactly 10 years after being planted",
+      "total_marks": 6
+    },
+    {
+      "figure_url": [
+        "https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-12.jpg?height=532&width=826&top_left_y=245&top_left_x=615"
+      ],
+      "parts": [
+        {
+          "marks": 1,
+          "part": "a",
+          "text": "(a) Write down the set of values of \\(x\\) for which\n\\[\n\\mathrm{f}^{\\prime}(x)<0\n\\]\n\nThe line with equation \\(y=k\\), where \\(k\\) is a constant, intersects \\(C\\) at only one point."
+        },
+        {
+          "marks": 2,
+          "part": "b",
+          "text": "(b) Find the set of values of \\(k\\), giving your answer in set notation."
+        },
+        {
+          "marks": 3,
+          "part": "c",
+          "text": "(c) Find the equation of \\(C\\). You may leave your answer in factorised form."
+        }
+      ],
+      "question_number": 6,
+      "text": "Figure 1\nFigure 1 shows a sketch of a curve \\(C\\) with equation \\(y=\\mathrm{f}(x)\\) where \\(\\mathrm{f}(x)\\) is a cubic expression in \\(x\\).\n\nThe curve\n- passes through the origin\n- has a maximum turning point at \\((2,8)\\)\n- has a minimum turning point at \\((6,0)\\)",
+      "total_marks": 6
+    },
+    {
+      "figure_url": [],
+      "parts": [
+        {
+          "marks": 3,
+          "part": "i",
+          "text": "(i) Given that \\(p\\) and \\(q\\) are integers such that\n\\[\np q \\text { is even }\n\\]\nuse algebra to prove by contradiction that at least one of \\(p\\) or \\(q\\) is even."
+        },
+        {
+          "marks": 2,
+          "part": "ii",
+          "text": "(ii) Given that \\(x\\) and \\(y\\) are integers such that\n- \\(x<0\\)\n- \\((x+y)^{2}<9 x^{2}+y^{2}\\)\nshow that \\(y>4 x\\)"
+        }
+      ],
+      "question_number": 7,
+      "text": "",
+      "total_marks": 5
+    },
+    {
+      "figure_url": [
+        "https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-16.jpg?height=535&width=692&top_left_y=241&top_left_x=682"
+      ],
+      "parts": [
+        {
+          "marks": 1,
+          "part": "a",
+          "text": "(a) find the value of \\(T\\)"
+        },
+        {
+          "marks": 4,
+          "part": "b",
+          "text": "(b) show that the maximum speed of the car occurs when\n\\[\nt=\\frac{26}{1+\\ln (t+1)}-1\n\\]\n\nUsing the iteration formula\n\\[\nt_{n+1}=\\frac{26}{1+\\ln \\left(t_{n}+1\\right)}-1\n\\]\nwith \\(t_{1}=7\\)"
+        },
+        {
+          "marks": 3,
+          "part": "c",
+          "text": "(c) (i) find the value of \\(t_{3}\\) to 3 decimal places,\n(ii) find, by repeated iteration, the time taken for the car to reach maximum speed."
+        }
+      ],
+      "question_number": 8,
+      "text": "Figure 2\nA car stops at two sets of traffic lights.\nFigure 2 shows a graph of the speed of the car, \\(v \\mathrm{~ms}^{-1}\\), as it travels between the two sets of traffic lights.\n\nThe car takes \\(T\\) seconds to travel between the two sets of traffic lights.\nThe speed of the car is modelled by the equation\n\\[\nv=(10-0.4 t) \\ln (t+1) \\quad 0 \\leqslant t \\leqslant T\n\\]\nwhere \\(t\\) seconds is the time after the car leaves the first set of traffic lights.\nAccording to the model,",
+      "total_marks": 8
+    },
+    {
+      "figure_url": [
+        "https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-20.jpg?height=418&width=533&top_left_y=239&top_left_x=770"
+      ],
+      "parts": [
+        {
+          "marks": 2,
+          "part": "a",
+          "text": "(a) show that parallelogram \\(P Q R S\\) is a rhombus."
+        },
+        {
+          "marks": 4,
+          "part": "b",
+          "text": "(b) Find the exact area of the rhombus \\(P Q R S\\)."
+        }
+      ],
+      "question_number": 9,
+      "text": "Figure 3\nFigure 3 shows a sketch of a parallelogram \\(P Q R S\\).\nGiven that\n- \\(\\overrightarrow{P Q}=2 \\mathbf{i}+3 \\mathbf{j}-4 \\mathbf{k}\\)\n- \\(\\overrightarrow{Q R}=5 \\mathbf{i}-2 \\mathbf{k}\\)",
+      "total_marks": 6
+    },
+    {
+      "figure_url": [],
+      "parts": [
+        {
+          "marks": 1,
+          "part": "a",
+          "text": "(a) find the number of bees at the start of the study,"
+        },
+        {
+          "marks": 3,
+          "part": "b",
+          "text": "(b) show that, exactly 10 years after the start of the study, the number of bees was increasing at a rate of approximately 18 thousand per year.\n\nThe number of wasps, measured in thousands, \\(N_{w}\\), is modelled by the equation\n\\[\nN_{w}=10+800 \\mathrm{e}^{-0.05 t}\n\\]\nwhere \\(t\\) is the number of years from the start of the study.\nWhen \\(t=T\\), according to the models, there are an equal number of bees and wasps."
+        },
+        {
+          "marks": 4,
+          "part": "c",
+          "text": "(c) Find the value of \\(T\\) to 2 decimal places."
+        }
+      ],
+      "question_number": 10,
+      "text": "A scientist is studying the number of bees and the number of wasps on an island. The number of bees, measured in thousands, \\(N_{b}\\), is modelled by the equation\n\\[\nN_{b}=45+220 \\mathrm{e}^{0.05 t}\n\\]\nwhere \\(t\\) is the number of years from the start of the study.\nAccording to the model,",
+      "total_marks": 8
+    },
+    {
+      "figure_url": [
+        "https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-28.jpg?height=643&width=855&top_left_y=244&top_left_x=606"
+      ],
+      "parts": [
+        {
+          "marks": 2,
+          "part": "a",
+          "text": "(a) Verify that the curves intersect at \\(x=\\frac{1}{2}\\)\n\nThe curves intersect again at the point \\(P\\)"
+        },
+        {
+          "marks": 5,
+          "part": "b",
+          "text": "(b) Using algebra and showing all stages of working, find the exact \\(x\\) coordinate of \\(P\\)"
+        }
+      ],
+      "question_number": 11,
+      "text": "Figure 4\nFigure 4 shows a sketch of part of the curve \\(C_{1}\\) with equation\n\\[\ny=2 x^{3}+10 \\quad x>0\n\\]\nand part of the curve \\(C_{2}\\) with equation\n\\[\ny=42 x-15 x^{2}-7 \\quad x>0\n\\]",
+      "total_marks": 7
+    },
+    {
+      "figure_url": [],
+      "parts": [],
+      "question_number": 12,
+      "text": "In this question you must show all stages of your working.\nSolutions relying on calculator technology are not acceptable.\nShow that\n\\[\n\\int_{1}^{\\mathrm{e}^{2}} x^{3} \\ln x \\mathrm{~d} x=a \\mathrm{e}^{8}+b\n\\]\nwhere \\(a\\) and \\(b\\) are rational constants to be found.",
+      "total_marks": 5
+    },
+    {
+      "figure_url": [],
+      "parts": [
+        {
+          "marks": 3,
+          "part": "i",
+          "text": "(i) In an arithmetic series, the first term is \\(a\\) and the common difference is \\(d\\).\n\nShow that\n\\[\nS_{n}=\\frac{n}{2}[2 a+(n-1) d]\n\\]"
+        },
+        {
+          "marks": 0,
+          "part": "ii",
+          "subparts": [
+            {
+              "marks": 2,
+              "part": "a",
+              "text": "(a) show that\n\\[\nn^{2}-26 n+160=0\n\\]"
+            },
+            {
+              "marks": 1,
+              "part": "b",
+              "text": "(b) Solve the equation\n\\[\nn^{2}-26 n+160=0\n\\]"
+            },
+            {
+              "marks": 1,
+              "part": "c",
+              "text": "(c) Hence state the number of weeks James takes to save enough money to buy the printer, giving a brief reason for your answer."
+            }
+          ],
+          "text": "(ii) James saves money over a number of weeks to buy a printer that costs \\(\u00a3 64\\)\n\nHe saves \\(\u00a3 10\\) in week \\(1, \u00a3 9.20\\) in week 2 , \\(\u00a3 8.40\\) in week 3 and so on, so that the weekly amounts he saves form an arithmetic sequence.\n\nGiven that James takes \\(n\\) weeks to save exactly \\(\u00a3 64\\)"
+        }
+      ],
+      "question_number": 13,
+      "text": "",
+      "total_marks": 7
+    },
+    {
+      "figure_url": [],
+      "parts": [
+        {
+          "marks": 4,
+          "part": "a",
+          "text": "(a) Given that\n\\[\n2 \\sin \\left(x-60^{\\circ}\\right)=\\cos \\left(x-30^{\\circ}\\right)\n\\]\nshow that\n\\[\n\\tan x=3 \\sqrt{3}\n\\]"
+        },
+        {
+          "marks": 4,
+          "part": "b",
+          "text": "(b) Hence or otherwise solve, for \\(0 \\leqslant \\theta<180^{\\circ}\\)\n\\[\n2 \\sin 2 \\theta=\\cos \\left(2 \\theta+30^{\\circ}\\right)\n\\]\ngiving your answers to one decimal place."
+        }
+      ],
+      "question_number": 14,
+      "text": "In this question you must show all stages of your working.\n\nSolutions relying entirely on calculator technology are not acceptable.",
+      "total_marks": 8
+    },
+    {
+      "figure_url": [
+        "https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-42.jpg?height=438&width=738&top_left_y=244&top_left_x=662"
+      ],
+      "parts": [
+        {
+          "marks": 4,
+          "part": "a",
+          "text": "(a) show that the surface area of the toy, \\(S \\mathrm{~cm}^{2}\\), is given by\n\\[\nS=0.8 r^{2}+\\frac{1680}{r}\n\\]\nmaking your method clear.\n\nUsing algebraic differentiation,"
+        },
+        {
+          "marks": 4,
+          "part": "b",
+          "text": "(b) find the value of \\(r\\) for which \\(S\\) has a stationary point."
+        },
+        {
+          "marks": 2,
+          "part": "c",
+          "text": "(c) Prove, by further differentiation, that this value of \\(r\\) gives the minimum surface area of the toy."
+        }
+      ],
+      "question_number": 15,
+      "text": "Figure 5\nA company makes toys for children.\nFigure 5 shows the design for a solid toy that looks like a piece of cheese.\nThe toy is modelled so that\n- face \\(A B C\\) is a sector of a circle with radius \\(r \\mathrm{~cm}\\) and centre \\(A\\)\n- angle \\(B A C=0.8\\) radians\n- faces \\(A B C\\) and \\(D E F\\) are congruent\n- edges \\(A D, C F\\) and \\(B E\\) are perpendicular to faces \\(A B C\\) and \\(D E F\\)\n- edges \\(A D, C F\\) and \\(B E\\) have length \\(h \\mathrm{~cm}\\)\n\nGiven that the volume of the toy is \\(240 \\mathrm{~cm}^{3}\\)",
+      "total_marks": 10
+    },
+    {
+      "figure_url": [
+        "https://cdn.mathpix.com/cropped/2024_10_02_d0e9c93c9c19b63d5a6fg-46.jpg?height=763&width=1012&top_left_y=241&top_left_x=522"
+      ],
+      "parts": [
+        {
+          "marks": 5,
+          "part": "a",
+          "text": "(a) Show that the area of \\(R\\) is given by\n\\[\n\\int_{0}^{a}\\left(8-8 \\cos 4 t+48 \\sin ^{2} t \\cos t\\right) \\mathrm{d} t\n\\]\nwhere \\(a\\) is a constant to be found."
+        },
+        {
+          "marks": 4,
+          "part": "b",
+          "text": "(b) Hence, using algebraic integration, find the exact area of \\(R\\)."
+        }
+      ],
+      "question_number": 16,
+      "text": "Figure 6\nFigure 6 shows a sketch of the curve \\(C\\) with parametric equations\n\\[\nx=8 \\sin ^{2} t \\quad y=2 \\sin 2 t+3 \\sin t \\quad 0 \\leqslant t \\leqslant \\frac{\\pi}{2}\n\\]\n\nThe region \\(R\\), shown shaded in Figure 6, is bounded by \\(C\\), the \\(x\\)-axis and the line with equation \\(x=4\\)",
+      "total_marks": 9
+    }
+  ]
+}
