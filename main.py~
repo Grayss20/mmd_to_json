@@ -43,7 +43,7 @@ def flatten_tabular_content(tabular_content):
     tabular_content = tabular_content.replace('\\\\', ' ')  # Replace line breaks
     tabular_content = tabular_content.replace('&', ' ')  # Replace column separators
 
-    # Remove LaTeX math delimiters (\( \), \[ \], etc.)
+    # Remove LaTeX math delimiters (\( \) and \[ \])
     tabular_content = re.sub(r'\\\(|\\\)|\\\[|\\\]', '', tabular_content)
 
     # Condense multiple spaces into a single space
@@ -54,9 +54,6 @@ def flatten_tabular_content(tabular_content):
 
 def parse_latex_tabular_recursive(latex_text):
     """Recursively parse LaTeX tabular environments and flatten their content."""
-    # Handle special LaTeX commands such as \hline and \multicolumn by removing them
-    latex_text = re.sub(r'\\hline|\\multicolumn\{[^}]*\}\{[^}]*\}', '', latex_text)
-
     pattern = r'\\begin{tabular}{[^}]*}(.+?)\\end{tabular}'
 
     def replace_tabular(match):
