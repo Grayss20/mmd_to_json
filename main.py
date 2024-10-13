@@ -37,43 +37,39 @@ def parse_rms_file(file_path):
     return questions
 
 
-def flatten_tabular_content(tabular_content):
-    """Convert tabular content into a single line without LaTeX formatting."""
-    # Replace line breaks and column delimiters with spaces
-    tabular_content = tabular_content.replace('\\\\', ' ')  # Replace line breaks
-    tabular_content = tabular_content.replace('&', ' ')  # Replace column separators
+def parse_tabular(text):
+    # Remove the beginning substring using raw string
+    text = text.replace(r"\begin{tabular}{|c|c|c|c|}", "", 1)
 
-    # Remove LaTeX math delimiters (\( \), \[ \], etc.)
-    tabular_content = re.sub(r'\\\(|\\\)|\\\[|\\\]', '', tabular_content)
+    # Remove any leading/trailing whitespace
+    text = text.strip()
+    parts = text.split('&')
 
-    # Condense multiple spaces into a single space
-    tabular_content = re.sub(r'\s+', ' ', tabular_content).strip()
+    parsed_rows = []
 
-    return tabular_content
+    for i in range((len(parts)-1)//3):
+        row = []
+        if i == 0:
+            row.append(parts[3*i].strip())
+        else:
+            row.append(str_to_split[last_newline_index + 1:].strip())
+        row.append(parts[3*i+1].strip())
+        row.append(parts[3*i+2].strip())
+        # 4th element
+        str_to_split = parts[3*i+3].strip()
+        last_newline_index = str_to_split.rfind('\n')
+        row.append(str_to_split[:last_newline_index].strip())
+        parsed_rows.append(row)
 
+    # Clear LaTeX junk
+    for row in parsed_rows:
+        for i in range(len(row)):
+            row[i] = row[i].replace(r"\begin{tabular}{l}", "")
+            row[i] = row[i].replace(r"\end{tabular}", " ")
+            row[i] = row[i].replace(r"\begin{tabular}{c}", "")
+            row[i] = row[i].replace(r"\hline", "")
 
-def parse_latex_tabular_recursive(latex_text):
-    """Recursively parse LaTeX tabular environments and flatten their content."""
-    # Handle special LaTeX commands such as \hline and \multicolumn by removing them
-    latex_text = re.sub(r'\\hline|\\multicolumn\{[^}]*\}\{[^}]*\}', '', latex_text)
-
-    pattern = r'\\begin{tabular}{[^}]*}(.+?)\\end{tabular}'
-
-    def replace_tabular(match):
-        # Extract the content inside the tabular environment
-        tabular_content = match.group(1)
-
-        # Recursively handle any nested tabular environments
-        if re.search(pattern, tabular_content):
-            tabular_content = re.sub(pattern, replace_tabular, tabular_content)
-
-        # Flatten the inner tabular content
-        return flatten_tabular_content(tabular_content)
-
-    # Replace all tabular environments in the input text recursively
-    parsed_text = re.sub(pattern, replace_tabular, latex_text, flags=re.DOTALL)
-
-    return parsed_text
+    return parsed_rows
 
 
 if __name__ == "__main__":
@@ -92,57 +88,57 @@ if __name__ == "__main__":
     print("--" * 30)
     for question in questions:
         question['tabular'] = question['tabular'].strip('\\begin{tabular}{|c|c|c|c|}\n').strip('\n\\end{tabular}')
-        question['tabular'] = parse_latex_tabular_recursive(question['tabular'])
+        question['tabular'] = parse_tabular(question['tabular'])
 
     print(questions[0])
     print("--" * 30)
 
-    for question in questions:
-        rows = question['tabular'].replace('\\hline', '').replace('\\multirow', '').replace('\\\\', '').replace('\\(', '$').replace('\\)', '$').split('\n')
-        print(f'tabular: {question["tabular"]}')
-        print(f'rows: {rows}')
-        for q in que:
-            if q["question_number"] == question["question_number"]:
-                if len(q["parts"]) == 0:        #No parts in the question
-                    print(rows)
-                    steps = []
-                    for row in rows[1:]:
-                        if "&" in row:
-                            chunks = row.split('&')
-                            if chunks[1].strip() != '':
-                                steps.append({
-                                    "scheme": chunks[1].strip(),
-                                    "marks": "",
-                                    "AOs": ""
-                                })
-                    q["mark_scheme"] = {
-                        "steps": steps,
-                        "alternative": question["leftovers"]
-                    }
-                else:       # parts in the question
-                    print(rows)
-                    steps = []
-                    part_count = -1
-                    for row in rows[2:]:
-                        if "&" in row:
-                            chunks = row.split('&')
-                            if chunks[0].strip() != '':
-                                if part_count != -1:
-                                    print(f'part_count: {part_count}, question number: {question["question_number"]}')
-                                    q["parts"][part_count]["mark_scheme"] = {
-                                        "steps": steps,
-                                        "alternative": question["leftovers"]
-                                    }
-                                steps = []
-                                part_count += 1
-                            if chunks[1].strip() != '':
-                                steps.append({
-                                    "scheme": chunks[1].strip(),
-                                    "marks": "",
-                                    "AOs": ""
-                                })
-
-
-
-    print("-"*30)
-    print(que[1])
+    # for question in questions:
+    #     rows = question['tabular'].replace('\\hline', '').replace('\\multirow', '').replace('\\\\', '').replace('\\(', '$').replace('\\)', '$').split('\n')
+    #     print(f'tabular: {question["tabular"]}')
+    #     print(f'rows: {rows}')
+    #     for q in que:
+    #         if q["question_number"] == question["question_number"]:
+    #             if len(q["parts"]) == 0:        #No parts in the question
+    #                 print(rows)
+    #                 steps = []
+    #                 for row in rows[1:]:
+    #                     if "&" in row:
+    #                         chunks = row.split('&')
+    #                         if chunks[1].strip() != '':
+    #                             steps.append({
+    #                                 "scheme": chunks[1].strip(),
+    #                                 "marks": "",
+    #                                 "AOs": ""
+    #                             })
+    #                 q["mark_scheme"] = {
+    #                     "steps": steps,
+    #                     "alternative": question["leftovers"]
+    #                 }
+    #             else:       # parts in the question
+    #                 print(rows)
+    #                 steps = []
+    #                 part_count = -1
+    #                 for row in rows[2:]:
+    #                     if "&" in row:
+    #                         chunks = row.split('&')
+    #                         if chunks[0].strip() != '':
+    #                             if part_count != -1:
+    #                                 print(f'part_count: {part_count}, question number: {question["question_number"]}')
+    #                                 q["parts"][part_count]["mark_scheme"] = {
+    #                                     "steps": steps,
+    #                                     "alternative": question["leftovers"]
+    #                                 }
+    #                             steps = []
+    #                             part_count += 1
+    #                         if chunks[1].strip() != '':
+    #                             steps.append({
+    #                                 "scheme": chunks[1].strip(),
+    #                                 "marks": "",
+    #                                 "AOs": ""
+    #                             })
+    #
+    #
+    #
+    # print("-"*30)
+    # print(que[1])
