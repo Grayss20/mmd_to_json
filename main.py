@@ -1,5 +1,6 @@
 import re
 import pprint
+import csv
 import json
 from utils import read_file
 from que_run import proceed_que
@@ -37,12 +38,19 @@ def parse_rms_file(file_path):
     return questions
 
 
+def remove_ampersands(match):
+    return match.group(1).replace("&", "")
+
+
 def parse_tabular(text):
     # Remove the beginning substring using raw string
     text = text.replace(r"\begin{tabular}{|c|c|c|c|}", "", 1)
 
     # Remove any leading/trailing whitespace
     text = text.strip()
+    pattern = r"\\begin\{aligned\}(.*?)\\end\{aligned\}"
+    text = re.sub(pattern, remove_ampersands, text, flags=re.DOTALL)
+
     parts = text.split('&')
 
     parsed_rows = []
@@ -68,6 +76,16 @@ def parse_tabular(text):
             row[i] = row[i].replace(r"\end{tabular}", " ")
             row[i] = row[i].replace(r"\begin{tabular}{c}", "")
             row[i] = row[i].replace(r"\hline", "")
+            row[i] = row[i].strip()
+            row[i] = row[i].rstrip(r"\\")
+            row[i] = row[i].strip()
+        # Regular expression to capture the text inside the last curly braces
+        pattern = r"\\multirow\[t\]\{\d+\}\{\*\}\{(.+?)\}"
+        row[0] = re.sub(pattern, r"\1", row[0]).strip()
+        pattern = r"\\multirow\{\d+\}\{\*\}\{(.+?)\}"
+        row[0] = re.sub(pattern, r"\1", row[0]).strip()
+
+
 
     return parsed_rows
 
@@ -78,67 +96,19 @@ if __name__ == "__main__":
 
     que, heading_info = proceed_que()
 
-    # Update que list with mark_scheme from questions list
-    for question in questions:
-        for q in que:
-            if q["question_number"] == question["question_number"]:
-                q["mark_scheme"] = question["tabular"]
 
-    pprint.pprint(que[0])
-    print("--" * 30)
+
     for question in questions:
-        question['tabular'] = question['tabular'].strip('\\begin{tabular}{|c|c|c|c|}\n').strip('\n\\end{tabular}')
+        #question['tabular'] = question['tabular'].strip('\\begin{tabular}{|c|c|c|c|}\n').strip('\n\\end{tabular}')
         question['tabular'] = parse_tabular(question['tabular'])
+        print("--" * 30)
+        print(f"Question {question['question_number']}:")
+        pprint.pprint(question['tabular'])
 
-    print(questions[0])
-    print("--" * 30)
+    # Writing to a CSV file
+    with open("rms_table.csv", mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        for question in questions:
+            # Write each row from the list of lists to the CSV
+            writer.writerows(question['tabular'])
 
-    # for question in questions:
-    #     rows = question['tabular'].replace('\\hline', '').replace('\\multirow', '').replace('\\\\', '').replace('\\(', '$').replace('\\)', '$').split('\n')
-    #     print(f'tabular: {question["tabular"]}')
-    #     print(f'rows: {rows}')
-    #     for q in que:
-    #         if q["question_number"] == question["question_number"]:
-    #             if len(q["parts"]) == 0:        #No parts in the question
-    #                 print(rows)
-    #                 steps = []
-    #                 for row in rows[1:]:
-    #                     if "&" in row:
-    #                         chunks = row.split('&')
-    #                         if chunks[1].strip() != '':
-    #                             steps.append({
-    #                                 "scheme": chunks[1].strip(),
-    #                                 "marks": "",
-    #                                 "AOs": ""
-    #                             })
-    #                 q["mark_scheme"] = {
-    #                     "steps": steps,
-    #                     "alternative": question["leftovers"]
-    #                 }
-    #             else:       # parts in the question
-    #                 print(rows)
-    #                 steps = []
-    #                 part_count = -1
-    #                 for row in rows[2:]:
-    #                     if "&" in row:
-    #                         chunks = row.split('&')
-    #                         if chunks[0].strip() != '':
-    #                             if part_count != -1:
-    #                                 print(f'part_count: {part_count}, question number: {question["question_number"]}')
-    #                                 q["parts"][part_count]["mark_scheme"] = {
-    #                                     "steps": steps,
-    #                                     "alternative": question["leftovers"]
-    #                                 }
-    #                             steps = []
-    #                             part_count += 1
-    #                         if chunks[1].strip() != '':
-    #                             steps.append({
-    #                                 "scheme": chunks[1].strip(),
-    #                                 "marks": "",
-    #                                 "AOs": ""
-    #                             })
-    #
-    #
-    #
-    # print("-"*30)
-    # print(que[1])
